@@ -6,7 +6,9 @@ class Search extends React.Component {
     this.state = {
       term: ''
     }
-  }
+    /////////////
+    this.search.bind(this);
+  }////////////////
 
   onChange (e) {
     this.setState({
@@ -20,7 +22,7 @@ class Search extends React.Component {
 
   render() {
     return (<div>
-      <h4>Add more repos!</h4>
+      <h4>Add - more - repos!</h4>
       Enter a github username: <input value={this.state.terms} onChange={this.onChange}/>       
       <button onClick={this.search}> Add Repos </button>
     </div>) 
