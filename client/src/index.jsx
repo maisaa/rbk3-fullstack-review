@@ -10,16 +10,29 @@ class App extends React.Component {
     this.state = { 
       repos: []
     }
-
   }
+ // updateUser(data){
+ //    this.setState({repos:data})
+ //  }
 
   search (term) {
     console.log(`${term} was searched`);
-    // TODO //////
-    this.setState({
-      repos : this.state.repos.push(term)
+     
+    $.ajax ({
+      url: "http://127.0.0.1:1128/repos",
+      type: 'GET',
+
+      data: term,//JSON.stringify
+      success: function(data){
+        // this.setState({repos:term})
+        console.log(term);
+      },
+      error:function(err){
+        console.error('err');
+      }
+
     })
-    ///////
+    
   }
 
   render () {
@@ -32,3 +45,5 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+

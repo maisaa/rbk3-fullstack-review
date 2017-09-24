@@ -1,4 +1,6 @@
 import React from 'react';
+import $ from 'jquery';
+
 
 class Search extends React.Component {
   constructor(props) {
@@ -7,7 +9,8 @@ class Search extends React.Component {
       term: ''
     }
     /////////////
-    this.search.bind(this);
+    //this.search = this.search.bind(this);
+   // this.onChange =this.onChange.bind(this.state);
   }////////////////
 
   onChange (e) {
@@ -16,15 +19,26 @@ class Search extends React.Component {
     });
   }
 
-  search() {
+  search(props) {
+
     this.props.onSearch(this.state.term);
+    // $.ajax ({
+    //   url: "http://127.0.0.1:1128/",
+    //   type: 'POST',
+    //   data: JSON.stringify(this.state.term),
+    //   success: function(){
+    //     console.log("post username by ajax");
+    //   }
+
+    // })//
+
   }
 
   render() {
     return (<div>
       <h4>Add - more - repos!</h4>
-      Enter a github username: <input value={this.state.terms} onChange={this.onChange}/>       
-      <button onClick={this.search}> Add Repos </button>
+      Enter a github username: <input value={this.state.terms} onChange={this.onChange.bind(this)}/>       
+      <button onClick={this.search.bind(this)}> Add Repos </button>
     </div>) 
   }
 }
